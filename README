@@ -1,0 +1,34 @@
+In June of 2003, a worm transmitted through weak software via IRC
+started spamming us all with dire warnings of Miss Cleo's
+injustice against someone named Ethom.  The story went that she
+had put him in a Mindjail, and some messages wailed like banshees
+imploring us to get poor Ethom out.  Here are a few samples from
+my logs:
+
+01:46 <akcrpxwzn> Miss Cleo has put a curse on Ethom, now Ethom
+	is trapped in mindjail, help him out...
+	http://66.222.28.114:3030/
+06:25 <bczexzzfs> E-thom is trapped in mindjail, mindjail is a
+	trap for your brain, see if you can get him out!
+	http://211.186.45.24:3030/mindjailworm: (child) [69]
+	dccspam irc.slashnet.org
+09:10 <gpqfxvvcf> Ever heard of a thing called mindjail? Check
+	it: http://61.101.91.237:3030/
+09:01 <pcokrfepi> EEEEEEETHHHOOOM! MINDJAIL!! HE IS TRAPPED!! GET
+	HIM OUT! http://24.167.37.66:3030/
+
+Of course, the local prankster and all around goofball on our
+local hangout is one Emaddin El-Haraty.  It didn't take long
+before the topic of the channel read "EEEEEEEMAAAD! MINDJAIL!!!
+HE IS TRAPPED!! GET HIM OUT!"
+
+Thus the comment "based on a true story".  Atob wrote the
+original emad in python, and released it via the local user list
+for zork.net.  It was quickly mutated and contributed to, and cvs
+on zork was soon provided.  Needing a good set of example code
+for an autoconf tutorial I was giving, I rewrote it in C with the
+ncurses panels library.
+
+No, of course you can't quit.  What kind of mindjail would THAT
+be?
+
