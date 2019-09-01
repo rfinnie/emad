@@ -202,13 +202,36 @@ void cthulhu(emad_struct *emad, PANEL *title)
     return;
 }
 
+void lobstimate(emad_struct *emad)
+{
+    static int i;
+    char *eyes[] = { "(|)__<o_O>__(\\/)",
+                     "(\\/)__<O_o>__(|)",
+                     "(|)__<o_O>__(\\/)",
+                     "(\\/)__<O_o>__(|)",
+                     "(|)__<o_O>__(\\/)",
+                     "(\\/)__<O_o>__(|)",
+                     "(\\/)__<-_->__(|)",
+                     "(\\/)__<O_o>__(|)"};
+    emad->change(emad, eyes[++i % 8]);
+    return;
+}
+void lobster(emad_struct *emad, PANEL *title)
+{
+    emad->resize(emad, 16, 1);
+    emad->change(emad,  "(\\/)__<O_o>__(|)");
+    retitle(title, " [Lobster In Mindjail] ");
+    emad->animate = lobstimate;
+    return;
+}
+
 void notemad(emad_struct *emad, PANEL *title)
 {
     static int i;
-    void *notemads[] = { xeroc, cowmad, cthulhu };
+    void *notemads[] = { xeroc, cowmad, cthulhu, lobster };
     void (*f)(emad_struct*, PANEL*);
 
-    f = notemads[++i % 3];
+    f = notemads[++i % 4];
     f(emad, title);
 
     newmessage("NO EMADS!");
