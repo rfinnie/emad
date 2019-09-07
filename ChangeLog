@@ -3,3 +3,7 @@
 
 1.0.0.1 (2019-09-01)
  * Added a lobster
+
+1.0.0.1.1 (2019-09-07)
+ * Fixes for compiling cleanly on modern systems
+   (tested on arm64 and s390x, probably works on amd64)
