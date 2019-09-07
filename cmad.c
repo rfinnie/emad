@@ -2,6 +2,8 @@
 #include <ncurses.h>
 #include <string.h>
 #include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /*
  * Emad In Mindjail

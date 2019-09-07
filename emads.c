@@ -9,6 +9,8 @@
 #include <panel.h>
 #include <ncurses.h>
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #include "emads.h"
 
