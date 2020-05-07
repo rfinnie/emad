@@ -331,7 +331,7 @@ int main(int argc, char *argv[])
     augmented = 0;
 
     while(1) {
-	if(ch == 'q' || ch == 'c')
+	if(ch == L'q' || ch == L'c')
 	    newmessage(L"He is trapped!");
 
 	get_wch(&ch);
@@ -343,33 +343,33 @@ int main(int argc, char *argv[])
 	switch(ch)
 	{
 	    case KEY_DOWN:
-	    case 'j':	spritemad->walk(spritemad, 0, 1);
+	    case L'j':	spritemad->walk(spritemad, 0, 1);
 			break;
 	    case KEY_UP:
-	    case 'k':	spritemad->walk(spritemad, 0, -1);
+	    case L'k':	spritemad->walk(spritemad, 0, -1);
 			break;
 	    case KEY_LEFT:
-	    case 'h':	spritemad->walk(spritemad, -1, 0);
+	    case L'h':	spritemad->walk(spritemad, -1, 0);
 			break;
 	    case KEY_RIGHT:
-	    case 'l':	spritemad->walk(spritemad, 1, 0);
+	    case L'l':	spritemad->walk(spritemad, 1, 0);
 			break;
-	    case 'n':	spritemad->walk(spritemad, 1, 1);
+	    case L'n':	spritemad->walk(spritemad, 1, 1);
 			break;
-	    case 'b':	spritemad->walk(spritemad, -1, 1);
+	    case L'b':	spritemad->walk(spritemad, -1, 1);
 			break;
-	    case 'u':	spritemad->walk(spritemad, 1, -1);
+	    case L'u':	spritemad->walk(spritemad, 1, -1);
 			break;
-	    case 'y':	spritemad->walk(spritemad, -1, -1);
+	    case L'y':	spritemad->walk(spritemad, -1, -1);
 			break;
-	    case 'q':
+	    case L'q':
 
 			newmessage(L"GET HIM OUT!!!");
 			show_panel(messagepanel);
 			top_panel(messagepanel);
 			update_panels();
 			break;
-	    case 'c':
+	    case L'c':
 			if(augmented) {
 			    fire_laser(spritemad);
 			} else {
@@ -377,7 +377,7 @@ int main(int argc, char *argv[])
 			    augmented = 1;
 			}
 			break;
-	    case 'e':
+	    case L'e':
 			retitle(titlepanel, L" [Emad In Mindjail] ");
 			spritemad->resize(spritemad, 4, 4);
 			spritemad->change(spritemad, L"\\||/",
@@ -388,9 +388,15 @@ int main(int argc, char *argv[])
 			newmessage(L"He is trapped!");
 			augmented = 0;
 			break;
-	    case 's':
-	    case 'S':
+	    case L's':
+	    case L'S':
 			notemad(spritemad, titlepanel);
+			augmented = 0;
+			break;
+	    case L'\u2603':
+			spritemad->resize(spritemad, 1, 1);
+			spritemad->change(spritemad, L"\u2603");
+			retitle(titlepanel, L" [Snowmad in Mindjail] ");
 			augmented = 0;
 			break;
 
