@@ -208,14 +208,14 @@ void cthulhu(emad_struct *emad, PANEL *title)
 void lobstimate(emad_struct *emad)
 {
     static int i;
-    wchar_t *eyes[] = { L"(|)__<o_O>__(\\/)",
-                        L"(\\/)__<O_o>__(|)",
+    wchar_t *eyes[] = { L"(\\/)__<O_o>__(|)",
                         L"(|)__<o_O>__(\\/)",
                         L"(\\/)__<O_o>__(|)",
                         L"(|)__<o_O>__(\\/)",
                         L"(\\/)__<O_o>__(|)",
-                        L"(\\/)__<-_->__(|)",
-                        L"(\\/)__<O_o>__(|)"};
+                        L"(|)__<o_O>__(\\/)",
+                        L"(\\/)__<O_o>__(|)",
+                        L"(\\/)__<-_->__(|)"};
     emad->change(emad, eyes[++i % 8]);
     return;
 }
@@ -231,8 +231,8 @@ void lobster(emad_struct *emad, PANEL *title)
 void shrugimate(emad_struct *emad)
 {
     static int i;
-    wchar_t *eyes[] = { L"\u00af\\(o_\u00b0)/\u00af",
-                        L"\u00af\\(\u00b0_o)/\u00af"};
+    wchar_t *eyes[] = { L"\u00af\\(\u00b0_o)/\u00af",
+                        L"\u00af\\(o_\u00b0)/\u00af"};
     emad->change(emad, eyes[++i % 2]);
     return;
 }
