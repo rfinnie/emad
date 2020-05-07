@@ -7,8 +7,8 @@
  */
 
 #include <panel.h>
-#include <ncurses.h>
-#include <string.h>
+#include <curses.h>
+#include <wchar.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -59,16 +59,16 @@ void changemad(emad_struct *self, ...)
 {
     va_list ap;
     int i;
-    char *row;
+    wchar_t *row;
 
     va_start(ap, self);
     for(i=0; i < self->height; i++) {
-	row = va_arg(ap, char*);
+	row = va_arg(ap, wchar_t*);
 	if(row != NULL) {
 	    if(self->sprite[i] != NULL) 
 		free(self->sprite[i]);
-	    self->sprite[i] = strdup(row);
-	    mvwaddstr(self->window, i, 0, self->sprite[i]);
+	    self->sprite[i] = wcsdup(row);
+	    mvwaddwstr(self->window, i, 0, self->sprite[i]);
 	}
     }
 
@@ -85,7 +85,7 @@ void resizemad(emad_struct *self, int w, int h)
 
     wresize(self->window, h, w);
     replace_panel(self->panel, self->window);
-    self->sprite = (char **)realloc(self->sprite, h * sizeof(char*));
+    self->sprite = (wchar_t **)realloc(self->sprite, h * sizeof(wchar_t*));
     for(i=self->height; i<h; i++) 
 	self->sprite[i] = NULL;
     self->width = w;
@@ -118,8 +118,8 @@ void del_emad(emad_struct *self)
 void animemad(emad_struct *self)
 {
     static int i;
-    char *eyes[] = { "(..)", "(.o)", "(oO)", "(Oo)", "(o.)" };
-    char *legs[] = { " /\\ ", " |\\ ", " || ", " /| "};
+    wchar_t *eyes[] = { L"(..)", L"(.o)", L"(oO)", L"(Oo)", L"(o.)" };
+    wchar_t *legs[] = { L" /\\ ", L" |\\ ", L" || ", L" /| "};
 
     i++;
     self->change(self, NULL, eyes[i % 5], NULL, legs[i % 4]);
@@ -148,7 +148,7 @@ emad_struct* new_emad(void)
     self->x = 1;
     self->y = 1;
 
-    self->sprite = (char **)malloc(self->height * sizeof(char*));
+    self->sprite = (wchar_t **)malloc(self->height * sizeof(wchar_t*));
     for(i=0; i < self->height; i++) 
 	self->sprite[i] = NULL;
     
@@ -157,10 +157,10 @@ emad_struct* new_emad(void)
     self->panel = new_panel(self->window);
 
     /* default sprite */
-    self->change(self, "\\||/",
-		 	"(..)",
-			"-||-",
-			" /\\ "); 
+    self->change(self, L"\\||/",
+		 	L"(..)",
+			L"-||-",
+			L" /\\ ");
 
     show_panel(self->panel);
     update_panels();

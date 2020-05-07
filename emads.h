@@ -1,5 +1,5 @@
 #include <panel.h>
-#include <ncurses.h>
+#include <curses.h>
 
 /*
  * Emad In Mindjail
@@ -11,7 +11,7 @@
 
 
 struct struct_emad {
-    char **sprite;
+    wchar_t **sprite;
     int height, width, x, y;
     PANEL *panel;
     WINDOW *window;

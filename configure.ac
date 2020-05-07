@@ -9,7 +9,10 @@ AC_PROG_INSTALL
 
 AC_HEADER_STDC
 
-AC_CHECK_LIB(ncurses,newwin)
-AC_CHECK_LIB(panel,new_panel)
+PKG_CHECK_MODULES(NCURSESW, ncursesw, [
+                  CFLAGS="$NCURSESW_CFLAGS -DNCURSES_WIDECHAR $CFLAGS"
+		  LIBS="$NCURSESW_LIBS $LIBS"
+		 ])
+AC_CHECK_LIB(panelw,new_panel)
 
 AC_OUTPUT(Makefile)
