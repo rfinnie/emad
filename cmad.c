@@ -228,10 +228,27 @@ void lobster(emad_struct *emad, PANEL *title)
     return;
 }
 
+void shrugimate(emad_struct *emad)
+{
+    static int i;
+    wchar_t *eyes[] = { L"\u00af\\(o_\u00b0)/\u00af",
+                        L"\u00af\\(\u00b0_o)/\u00af"};
+    emad->change(emad, eyes[++i % 2]);
+    return;
+}
+void shrug(emad_struct *emad, PANEL *title)
+{
+    emad->resize(emad, 9, 1);
+    emad->change(emad, L"\u00af\\(\u00b0_o)/\u00af");
+    retitle(title, L" [I Guess I'm In Mindjail?] ");
+    emad->animate = shrugimate;
+    return;
+}
+
 void notemad(emad_struct *emad, PANEL *title)
 {
     static int i;
-    void *notemads[] = { xeroc, cowmad, cthulhu, lobster };
+    void *notemads[] = { xeroc, cowmad, cthulhu, lobster, shrug };
     void (*f)(emad_struct*, PANEL*);
 
     f = notemads[++i % 5];
