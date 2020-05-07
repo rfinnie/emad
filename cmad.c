@@ -326,7 +326,6 @@ int main(int argc, char *argv[])
 					     emad */
 
     doupdate();
-    sleep(1);
 
     oldanim = spritemad->animate;
     augmented = 0;
