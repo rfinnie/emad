@@ -1,4 +1,4 @@
-AC_INIT([emad], [1.0.0.1.1])
+AC_INIT([emad], [10.0.11.0.0.0.2])
 AC_CONFIG_SRCDIR([emads.h])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIRS([m4])
