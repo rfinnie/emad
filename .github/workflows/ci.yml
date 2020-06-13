@@ -12,7 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Dependency packages
-      run: sudo apt-get -y install gnulib libncurses-dev
+      run: |
+        sudo apt-get -y install gnulib
+        sudo apt-get -y install libncursesw5-dev || true
+        sudo apt-get -y install libncurses-dev
     - name: autogen
       run: ./autogen.sh
     - name: configure
