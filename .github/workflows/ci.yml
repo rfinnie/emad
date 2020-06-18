@@ -16,8 +16,8 @@ jobs:
         sudo apt-get -y install gnulib
         sudo apt-get -y install libncursesw5-dev || true
         sudo apt-get -y install libncurses-dev
-    - name: autogen
-      run: ./autogen.sh
+    - name: autoreconf
+      run: autoreconf -ifv
     - name: configure
       run: ./configure
     - name: make
