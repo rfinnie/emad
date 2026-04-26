@@ -7,7 +7,7 @@
 # SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-AC_INIT([emad],[10.0.11.0.0.0.2])
+AC_INIT([emad],[26])
 AC_CONFIG_SRCDIR([emads.h])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIRS([m4])

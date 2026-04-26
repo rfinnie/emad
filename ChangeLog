@@ -12,3 +12,8 @@
  * Added ¯\(°_o)/¯ I guess, lol
  * Converted to ncursesw for full emoji compatibility
  * Verified, certified, blessed and notarized on riscv64
+
+26 (2026-04-26)
+ * Various autoconf and packaging updates
+ * Changed UI to new Liquid Emad interface
+ * Went back in time to vibe code the original program
