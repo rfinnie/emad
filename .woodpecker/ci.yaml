@@ -1,0 +1,62 @@
+# SPDX-PackageName: emad
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/emad
+# SPDX-FileComment: Woodpecker CI ci workflow
+# SPDX-FileCopyrightText: © 2026 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+---
+when:
+  - event: ["push", "pull_request", "manual"]
+labels:
+  platform: "linux/amd64"
+steps:
+  - name: "CI"
+    image: "debian"
+    commands: |
+      # Dependency packages
+      apt-get update
+      apt-get -y install build-essential gnulib pkg-config
+      apt-get -y install libncursesw5-dev || true
+      apt-get -y install libncurses-dev || true
+
+      # Build
+      autoreconf -ifv
+      ./configure
+      make
+
+      # Test
+      make check
+      make distcheck
+
+      # Upload dist
+      artifact_fn="${CI_REPO_NAME}-${CI_PIPELINE_CREATED}-${CI_WORKFLOW_NAME}-${CI_PIPELINE_NUMBER}.tar.gz"
+      mkdir -p .assets
+      mv emad-*.tar.gz ".assets/$${artifact_fn}"
+  - name: "Upload assets"
+    image: "woodpeckerci/plugin-s3"
+    settings:
+      endpoint: "http://nibbler.snowman.lan:3900"
+      path_style: true
+      region: "garage"
+      bucket: "codeberg-ci-assets"
+      access_key:
+        from_secret: "garage_access_key"
+      secret_key:
+        from_secret: "garage_secret_key"
+      source: ".assets/*"
+      strip_prefix: ".assets/"
+      target: "/"
+  - name: "Notify Mastodon if failure"
+    when:
+      - status: ["failure"]
+    image: "woodpeckerci/plugin-mastodon-post"
+    settings:
+      server_url: "https://m29.us"
+      access_token:
+        from_secret: "m29_token"
+      status: |
+        🪿 🪿 🪿 FAILURE: {{ CI_REPO }} 🪿 🪿 🪿
+        Workflow: {{ CI_WORKFLOW_NAME }} ({{ CI_PIPELINE_EVENT }} on {{ CI_COMMIT_REF }})
+
+        Pipeline: {{ CI_PIPELINE_URL }}
+        Commit: {{ CI_PIPELINE_FORGE_URL }}
