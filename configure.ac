@@ -7,18 +7,16 @@
 # SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-AC_INIT([emad], [10.0.11.0.0.0.2])
+AC_INIT([emad],[10.0.11.0.0.0.2])
 AC_CONFIG_SRCDIR([emads.h])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIRS([m4])
-AM_CONFIG_HEADER(config.h)
-AC_LANG_C
+AC_CONFIG_HEADERS(config.h)
+AC_LANG([C])
 
 AC_PROG_CC
-AM_PROG_LIBTOOL
+LT_INIT
 AC_PROG_INSTALL
-
-AC_HEADER_STDC
 
 PKG_CHECK_MODULES([NCURSESW], [ncursesw], [
                   CFLAGS="$NCURSESW_CFLAGS -DNCURSES_WIDECHAR $CFLAGS"
@@ -26,4 +24,5 @@ PKG_CHECK_MODULES([NCURSESW], [ncursesw], [
 		 ])
 AC_CHECK_LIB(panelw,new_panel)
 
-AC_OUTPUT(Makefile)
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
