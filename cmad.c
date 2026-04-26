@@ -1,3 +1,14 @@
+/*
+SPDX-PackageName: emad
+SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+SPDX-PackageDownloadLocation: https://github.com/rfinnie/emad
+SPDX-FileComment: emad source
+SPDX-FileCopyrightText: © 2003 Nick Moffitt <nick@zork.net>
+SPDX-FileCopyrightText: © 2003 Atob <atob@zork.net>
+SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
+SPDX-License-Identifier: GPL-2.0-or-later
+*/
+
 #include <panel.h>
 #include <curses.h>
 #include <wchar.h>
@@ -322,7 +333,7 @@ int main(int argc, char *argv[])
 
     messagepanel = message; /* bah, globals... */
     spritemad = new_emad();
-    spritemad->borderalert = heistrapped; /* overload alert with our 
+    spritemad->borderalert = heistrapped; /* overload alert with our
 					     emad */
 
     doupdate();
@@ -401,7 +412,7 @@ int main(int argc, char *argv[])
 			break;
 
 	}
-	
+
 	doupdate();
     }
 

@@ -1,3 +1,12 @@
+# SPDX-PackageName: emad
+# SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+# SPDX-PackageDownloadLocation: https://github.com/rfinnie/emad
+# SPDX-FileComment: autoconf source
+# SPDX-FileCopyrightText: © 2003 Nick Moffitt <nick@zork.net>
+# SPDX-FileCopyrightText: © 2003 Atob <atob@zork.net>
+# SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 AC_INIT([emad], [10.0.11.0.0.0.2])
 AC_CONFIG_SRCDIR([emads.h])
 AM_INIT_AUTOMAKE

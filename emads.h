@@ -1,3 +1,14 @@
+/*
+SPDX-PackageName: emad
+SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+SPDX-PackageDownloadLocation: https://github.com/rfinnie/emad
+SPDX-FileComment: emad source
+SPDX-FileCopyrightText: © 2003 Nick Moffitt <nick@zork.net>
+SPDX-FileCopyrightText: © 2003 Atob <atob@zork.net>
+SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
+SPDX-License-Identifier: GPL-2.0-or-later
+*/
+
 #include <panel.h>
 #include <curses.h>
 
@@ -28,6 +39,6 @@ typedef struct struct_emad emad_struct;
 /* function declarations */
 emad_struct* new_emad(void);
 
-/* With any luck at all, this is all I'll need, since I have the 
+/* With any luck at all, this is all I'll need, since I have the
  * prototypes built into the struct here.
  */

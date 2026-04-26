@@ -1,4 +1,15 @@
 /*
+SPDX-PackageName: emad
+SPDX-PackageSupplier: Ryan Finnie <ryan@finnie.org>
+SPDX-PackageDownloadLocation: https://github.com/rfinnie/emad
+SPDX-FileComment: emad source
+SPDX-FileCopyrightText: © 2003 Nick Moffitt <nick@zork.net>
+SPDX-FileCopyrightText: © 2003 Atob <atob@zork.net>
+SPDX-FileCopyrightText: © 2020 Ryan Finnie <ryan@finnie.org>
+SPDX-License-Identifier: GPL-2.0-or-later
+*/
+
+/*
  * Emad In Mindjail
  *   Based on a true story.
  * Copyright (C) Nick Moffitt et al
@@ -65,7 +76,7 @@ void changemad(emad_struct *self, ...)
     for(i=0; i < self->height; i++) {
 	row = va_arg(ap, wchar_t*);
 	if(row != NULL) {
-	    if(self->sprite[i] != NULL) 
+	    if(self->sprite[i] != NULL)
 		free(self->sprite[i]);
 	    self->sprite[i] = wcsdup(row);
 	    mvwaddwstr(self->window, i, 0, self->sprite[i]);
@@ -80,13 +91,13 @@ void resizemad(emad_struct *self, int w, int h)
 {
     int i;
 
-    wclear(self->window);  
+    wclear(self->window);
     wnoutrefresh(self->window);
 
     wresize(self->window, h, w);
     replace_panel(self->panel, self->window);
     self->sprite = (wchar_t **)realloc(self->sprite, h * sizeof(wchar_t*));
-    for(i=self->height; i<h; i++) 
+    for(i=self->height; i<h; i++)
 	self->sprite[i] = NULL;
     self->width = w;
     self->height = h;
@@ -149,9 +160,9 @@ emad_struct* new_emad(void)
     self->y = 1;
 
     self->sprite = (wchar_t **)malloc(self->height * sizeof(wchar_t*));
-    for(i=0; i < self->height; i++) 
+    for(i=0; i < self->height; i++)
 	self->sprite[i] = NULL;
-    
+
     /* curses froofergee */
     self->window = newwin(self->height, self->width, self->x, self->y);
     self->panel = new_panel(self->window);
@@ -167,4 +178,3 @@ emad_struct* new_emad(void)
 
     return self;
 }
-
