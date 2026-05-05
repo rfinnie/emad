@@ -13,6 +13,7 @@ steps:
   - name: "CI"
     image: "debian"
     commands: |
+      set -x
       # Dependency packages
       apt-get update
       apt-get -y install build-essential gnulib pkg-config
